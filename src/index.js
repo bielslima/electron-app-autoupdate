@@ -13,16 +13,13 @@ function createWindow() {
     },
   });
 
-  mainWindow.loadFile("index.html");
+  mainWindow.loadFile("src/presentation/home/index.html");
 
   mainWindow.on("closed", function () {
     mainWindow = null;
   });
 
-  //   mainWindow.webContents.openDevTools();
-
   ipcMain.on("app_version_request", function (event) {
-    console.log("request");
     mainWindow.webContents.send("app_version_response", {
       version: app.getVersion(),
     });
